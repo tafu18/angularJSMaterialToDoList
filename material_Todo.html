@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.12/angular-material.min.css">
+    <link rel="stylesheet" type="text/css" href="material_Todo.css">
+
+</head>
+<body>
+<div ng-app="toDoList" ng-cloak>
+    <md-toolbar class="md-theme-light">
+    <h2 class="md-toolbar-tools"><span>YAPILACAKLAR LİSTESİ</span></h2>
+    </md-toolbar>
+
+    <div id="div" ng-controller="myController as todoList">
+        <fieldset id="legend" class="standard">
+        <legend>YAPILACAKLAR LİSTESİ</legend>
+        <div id="kalanlar"><span>Yapılmamış İşler {{todoList.kalan()}} / {{todoList.todos.length}} </span></div>
+        <md-button id="sub" class="md-warn md-raised md-hue-2" ng-click="todoList.sil()" >SİL</md-button>
+
+        <md-list>
+            <md-list-item id="divTodo" class="md-2-line" ng-repeat="todo in todoList.todos">
+                <md-checkbox class="md-primary md-raised md-hue-2" ng-model="todo.done"></md-checkbox>
+                <div class="md-list-item-text">
+                    <p>{{todo.text}}</p>
+                </div>
+            </md-list-item>
+        </md-list>
+        <form ng-submit="todoList.ekle()">
+            <md-input-container>
+            <input id="newTodo" type="text" ng-model="todoList.todoText" placeholder="Yeni Yapılacak İş Ekle">
+            </md-input-container>
+            <md-button id="sub" class="md-primary md-raised md-hue-2" type="submit">Ekle</md-button>
+        </form>
+
+            <md-button target="_blank" ng-href="https://www.google.com/" class="md-accent md-fab md-fab-top-right"><md-icon md-svg-icon="googlw.svg"></md-icon></md-button>
+        </fieldset>
+    </div>
+</div>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.6/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.6/angular-animate.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.6/angular-aria.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.6/angular-messages.min.js"></script>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.12/angular-material.min.js"></script>
+    <script src="material_Todo.js"></script>
+
+</body>
+</html>
